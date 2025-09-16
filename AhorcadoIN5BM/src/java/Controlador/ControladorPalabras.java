@@ -1,0 +1,105 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+package Controlador;
+
+import Modelo.Palabra;
+import Modelo.PalabraDAO;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+/**
+ *
+ * @author User
+ */
+@WebServlet(name = "ControladorPalabras", urlPatterns = {"/ControladorPalabras"})
+public class ControladorPalabras extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ControladorPalabras</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ControladorPalabras at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        // Le decimos al navegador que lo que vamos a enviar es un JSON
+        response.setContentType("application/json");
+        
+        // Este no es obligatorio peeero, hace que se eviten problemas con acentos
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
+
+        //Se creala instancia del PalabraDAO y se llama al metodo obtenerPalabra
+        PalabraDAO dao = new PalabraDAO();
+        Palabra palabra = dao.obtenerPalabraAleatoria();
+
+        // Construimos manualmente un JSON con la palabra y sus pistas
+        // Esto se hace concatenando cadenas con los valores obtenidos del objeto "palabra"
+        String respuesta = "{" + "\"palabra\":\"" + palabra.getPalabra() + "\","
+                + "\"pista1\":\"" + palabra.getPista1() + "\","
+                + "\"pista2\":\"" + palabra.getPista2() + "\","
+                + "\"pista3\":\"" + palabra.getPista3() + "\"" + "}";
+
+        out.print(respuesta);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
