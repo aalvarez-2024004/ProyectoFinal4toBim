@@ -89,7 +89,7 @@ Delimiter $$
 		in p_contrasena varchar(100))
 	begin
 		select  * from Usuarios
-			where usuario = p_usuario AND contrasena = p_contrasena;
+			where usuario = p_usuario and contrasena = p_contrasena;
 	end $$
 Delimiter ;
 
