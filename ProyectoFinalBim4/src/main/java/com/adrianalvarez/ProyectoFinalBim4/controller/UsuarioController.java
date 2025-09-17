@@ -49,7 +49,8 @@ public class UsuarioController {
     public ResponseEntity<Object> createUsuario(@Valid @RequestBody Usuario usuario){
         try{
             Usuario createdUsuario = usuarioService.saveUsuario(usuario);
-            return new ResponseEntity<>(createdUsuario, HttpStatus.CREATED);
+            String mensaje = "Has agregado al usuario: " + createdUsuario.getUsuario() + " con exito!";
+            return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
         } catch(IllegalArgumentException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
