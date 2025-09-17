@@ -19,15 +19,17 @@ public class Palabra {
     @Column(name = "palabra")
     private String palabra;
 
-    @NotBlank(message = "La pista1 es obligatoria")
+    @NotBlank(message = "La pista 1 es obligatoria")
     @Size(max = 50, message = "La pista 1 no puede pasarse de los 50 caracteres")
     @Column(name = "pista1")
     private String pista1;
 
+    @NotBlank(message = "La pista 2 es obligatoria")
     @Size(max = 50, message = "La pista 2 no puede pasarse de los 50 caracteres")
     @Column(name = "pista2")
     private String pista2;
 
+    @NotBlank(message = "La pista 3 es obligatoria")
     @Size(max = 50, message = "La pista 3 no puede pasarse de los 50 caracteres")
     @Column(name = "pista3")
     private String pista3;
