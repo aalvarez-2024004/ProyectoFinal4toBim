@@ -71,5 +71,14 @@
                 </div>
             </div>
         </div>
+        
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <img id="modal-imagen" src="" alt="Resultado del juego">
+                <h2 id="modal-mensaje"></h2>
+                <button id="modal-cerrar">Cerrar</button>
+            </div>
+        </div>
+
     </body>
 </html>

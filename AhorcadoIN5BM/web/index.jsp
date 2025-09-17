@@ -23,8 +23,6 @@
                 <input type="password" name="txtContrasena" placeholder="Contraseña" required />
                 <button type="submit" name="accion" value="Ingresar">Iniciar Sesión</button>
             </form>
-            
-            <p class="login-link">¿No tienes cuenta? <a href="registrarse.jsp">Regístrate</a></p>
 
         </div>
     </body>

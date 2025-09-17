@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (intentos === maxIntentos) {
                 clearInterval(temporizador);
-                alert("Perdiste, suerte a la proxima :D La palabra era " + palabraSeleccionada);
+                mostrarModal("perdiste");
                 activarTeclado(false);
             }
         }
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function verificarGanar(){
         if (!palabraOculta.includes("_")) {
             clearInterval(temporizador);
-            alert("Ganaste! Felicidades <3");
+            mostrarModal("ganaste");
             activarTeclado(false);
         }
     }
@@ -204,6 +204,30 @@ document.addEventListener("DOMContentLoaded", () => {
         juegoPausado = !juegoPausado;
         btnPausar.textContent = juegoPausado ? "Reanudar" : "Pausar";
     }
+    
+    
+    // Función para mostrar el modal de victoria/derrota
+    function mostrarModal(resultado) {
+        const modal = document.getElementById("modal");
+        const modalImagen = document.getElementById("modal-imagen");
+        const modalMensaje = document.getElementById("modal-mensaje");
+
+        if (resultado === "ganaste") {
+            modalImagen.src = "img/GanasteImagen.jpg";
+            modalMensaje.textContent = "¡Felicidades, ganaste!";
+        } else {
+            modalImagen.src = "img/PerdisteImagen.jpg";
+            modalMensaje.textContent = `¡Perdiste! La palabra era: ${palabraSeleccionada}`;
+        }
+
+        modal.style.display = "flex";
+    }
+
+// Evento para cerrar el modal
+    document.getElementById("modal-cerrar").addEventListener("click", () => {
+        document.getElementById("modal").style.display = "none";
+    });
+    
 
     btnIniciar.addEventListener("click", iniciarJuego);   // empieza nueva palabra
     btnReiniciar.addEventListener("click", reiniciarJuego); // reinicia misma palabra
@@ -214,6 +238,14 @@ document.addEventListener("DOMContentLoaded", () => {
         boton.addEventListener("click", () => {
             intento(boton.textContent, boton);
         });
+    });
+    
+    // Cerrar modal al hacer clic fuera
+    window.addEventListener("click", (event) => {
+        const modal = document.getElementById("modal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
     });
 
     // botones de pistas
