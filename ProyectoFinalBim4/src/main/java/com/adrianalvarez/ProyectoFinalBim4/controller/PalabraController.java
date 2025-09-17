@@ -3,7 +3,6 @@ package com.adrianalvarez.ProyectoFinalBim4.controller;
 
 import com.adrianalvarez.ProyectoFinalBim4.model.Palabra;
 import com.adrianalvarez.ProyectoFinalBim4.service.PalabraService;
-import com.adrianalvarez.ProyectoFinalBim4.service.PalabraServiceImplements;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,16 +21,6 @@ public class PalabraController {
 
     public PalabraController(PalabraService palabraService) {
         this.palabraService = palabraService;
-    }
-
-    // Manejo de validaciones
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(error ->
-                errors.put(error.getField(), error.getDefaultMessage())
-        );
-        return ResponseEntity.badRequest().body(errors);
     }
 
     //OBtener las palabras
@@ -78,5 +67,15 @@ public class PalabraController {
     @DeleteMapping("/{id}")
     public void deletePalabra(@PathVariable Integer id){
         palabraService.deletePalabra(id);
+    }
+
+    // Manejo de validaciones
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getFieldErrors().forEach(error ->
+                errors.put(error.getField(), error.getDefaultMessage())
+        );
+        return ResponseEntity.badRequest().body(errors);
     }
 }

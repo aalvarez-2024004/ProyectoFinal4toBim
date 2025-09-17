@@ -21,6 +21,12 @@ public class ValidacionPalabra {
             return "Esta palabra ya existe! Crea otra palabra ;D";
         }
 
+        String palabraComp = palabra.getPalabra();
+
+        if (!palabraComp.matches("^[a-zA-Z]+$")) {
+            return "La palabra solo puede contener letras";
+        }
+
         return null;
     }
 }
