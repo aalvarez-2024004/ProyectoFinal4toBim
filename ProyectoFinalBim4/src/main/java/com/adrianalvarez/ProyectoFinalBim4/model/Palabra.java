@@ -2,6 +2,8 @@ package com.adrianalvarez.ProyectoFinalBim4.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name ="Palabras")
@@ -12,15 +14,21 @@ public class Palabra {
     @Column(name ="codigo_palabra")
     private Integer codigoPalabra;
 
+    @NotBlank(message = "DEBES DE AGREGAR UNA PALABRA!")
+    @Size(min = 8, message = "La palabra debe tener minimo 8 caracteres")
     @Column(name = "palabra")
     private String palabra;
 
+    @NotBlank(message = "La pista1 es obligatoria")
+    @Size(max = 50, message = "La pista 1 no puede pasarse de los 50 caracteres")
     @Column(name = "pista1")
     private String pista1;
 
+    @Size(max = 50, message = "La pista 2 no puede pasarse de los 50 caracteres")
     @Column(name = "pista2")
     private String pista2;
 
+    @Size(max = 50, message = "La pista 3 no puede pasarse de los 50 caracteres")
     @Column(name = "pista3")
     private String pista3;
 
