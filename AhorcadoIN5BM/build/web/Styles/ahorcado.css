@@ -91,13 +91,13 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 350px;
-  height: 350px;
+  max-width: 450px;
+  height: 450px;
 }
 
 /* Imagen del muñeco */
 .imagen-muneco {
-  max-height: 300px;
+  max-height: 400px;
   max-width: 100%;
   object-fit: contain;
 }
@@ -254,6 +254,25 @@ body {
 
 .pausar:hover {
   background-color: #d32f2f;
+}
+
+/* Botón de salir*/
+.salir {
+  display: inline-block;
+  text-decoration: none;  /* Quitar subrayado */
+  background-color: #9C27B0;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.salir:hover {
+  background-color: #7B1FA2;
+  transform: scale(1.05);
 }
 
 /*Responsividad*/

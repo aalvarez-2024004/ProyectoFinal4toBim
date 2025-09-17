@@ -66,6 +66,7 @@
                         <button class="iniciar">Iniciar</button>
                         <button class="reiniciar">Reiniciar</button>
                         <button class="pausar">Pausar</button>
+                        <a href="index.jsp" class="salir">Cerrar Sesión</a>
                     </div>
                 </div>
             </div>

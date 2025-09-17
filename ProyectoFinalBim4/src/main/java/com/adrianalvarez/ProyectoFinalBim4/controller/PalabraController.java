@@ -40,7 +40,8 @@ public class PalabraController {
     public ResponseEntity<Object> createPalabra(@Valid @RequestBody Palabra palabra){
         try {
             Palabra createdPalabra = palabraService.savePalabra(palabra);
-            return new ResponseEntity<>(createdPalabra, HttpStatus.CREATED);
+            String mensaje = "Has agregado la palabra :" + createdPalabra.getPalabra() + "' con éxito!";
+            return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
         }catch(IllegalArgumentException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
