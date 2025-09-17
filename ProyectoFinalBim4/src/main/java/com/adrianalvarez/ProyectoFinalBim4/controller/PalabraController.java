@@ -2,6 +2,7 @@ package com.adrianalvarez.ProyectoFinalBim4.controller;
 
 
 import com.adrianalvarez.ProyectoFinalBim4.model.Palabra;
+import com.adrianalvarez.ProyectoFinalBim4.model.Usuario;
 import com.adrianalvarez.ProyectoFinalBim4.service.PalabraService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -65,9 +66,14 @@ public class PalabraController {
     }
 
     // Manejar el caso cuando hacen PUT sin id
-    @PutMapping(value = {"", "/"}, consumes = "*/*")
-    public ResponseEntity<Object> updateWithoutId() {
-        return ResponseEntity.badRequest().body("Debes proporcionar un ID en la URL para actualizar una palabra.");
+    @PutMapping("/")
+    public ResponseEntity<String> updateUsuarioSinId(@RequestBody Usuario usuario) {
+        return new ResponseEntity<>("Se requiere el codigo de la palabra en la ruta para realizar una actualización", HttpStatus.BAD_REQUEST);
+    }
+
+    @PutMapping("")
+    public ResponseEntity<String> updateUsuarioSinNada(@RequestBody Usuario usuario) {
+        return new ResponseEntity<>("Se requiere codigo de la palabra en la ruta para realizar una actualización", HttpStatus.BAD_REQUEST);
     }
 
     //Eliminar una palabra

@@ -73,9 +73,14 @@ public class UsuarioController {
     }
 
     // Manejar el caso cuando hacen PUT sin id
-    @PutMapping(value = {"", "/"}, consumes = "*/*")
-    public ResponseEntity<Object> updateWithoutId() {
-        return ResponseEntity.badRequest().body("Debes proporcionar un ID en la URL para actualizar un usuario.");
+    @PutMapping("/")
+    public ResponseEntity<String> updateUsuarioSinId(@RequestBody Usuario usuario) {
+        return new ResponseEntity<>("Se requiere un codigo de usuario en la ruta para realizar una actualización", HttpStatus.BAD_REQUEST);
+    }
+
+    @PutMapping("")
+    public ResponseEntity<String> updateUsuarioSinNada(@RequestBody Usuario usuario) {
+        return new ResponseEntity<>("Se requiere un codigo de usuario en la ruta para realizar una actualización", HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")
