@@ -72,6 +72,12 @@ public class UsuarioController {
         }
     }
 
+    // Manejar el caso cuando hacen PUT sin id
+    @PutMapping(value = {"", "/"}, consumes = "*/*")
+    public ResponseEntity<Object> updateWithoutId() {
+        return ResponseEntity.badRequest().body("Debes proporcionar un ID en la URL para actualizar un usuario.");
+    }
+
     @DeleteMapping("/{id}")
     public void deleteUsuario(@PathVariable Integer id){
         usuarioService.deleteUsuario(id);

@@ -64,6 +64,12 @@ public class PalabraController {
         }
     }
 
+    // Manejar el caso cuando hacen PUT sin id
+    @PutMapping(value = {"", "/"}, consumes = "*/*")
+    public ResponseEntity<Object> updateWithoutId() {
+        return ResponseEntity.badRequest().body("Debes proporcionar un ID en la URL para actualizar una palabra.");
+    }
+
     //Eliminar una palabra
     @DeleteMapping("/{id}")
     public void deletePalabra(@PathVariable Integer id){
