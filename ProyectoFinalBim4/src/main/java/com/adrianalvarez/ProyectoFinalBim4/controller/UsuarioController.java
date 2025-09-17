@@ -88,4 +88,14 @@ public class UsuarioController {
         usuarioService.deleteUsuario(id);
     }
 
+    @DeleteMapping("/")
+    public ResponseEntity<String> deleteUsuarioSin() {
+        return new ResponseEntity<>("Se requiere el codigo del usuario en la ruta para realizar una eliminación", HttpStatus.BAD_REQUEST);
+    }
+
+    @DeleteMapping("")
+    public ResponseEntity<String> deleteUsuarioSinId() {
+        return new ResponseEntity<>("Se requiere el codigo del usuario en la ruta para realizar una eliminación", HttpStatus.BAD_REQUEST);
+    }
+
 }

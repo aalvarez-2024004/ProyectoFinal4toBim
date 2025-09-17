@@ -82,6 +82,16 @@ public class PalabraController {
         palabraService.deletePalabra(id);
     }
 
+    @DeleteMapping("/")
+    public ResponseEntity<String> deletePalabraSin() {
+        return new ResponseEntity<>("Se requiere el codigo del usuario en la ruta para realizar una eliminación", HttpStatus.BAD_REQUEST);
+    }
+
+    @DeleteMapping("")
+    public ResponseEntity<String> deletePalabraSinId() {
+        return new ResponseEntity<>("Se requiere el codigo del usuario en la ruta para realizar una eliminación", HttpStatus.BAD_REQUEST);
+    }
+
     // Manejo de validaciones
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
