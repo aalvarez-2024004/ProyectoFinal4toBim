@@ -14,6 +14,10 @@
     </head>
 
     <body>
+        <video autoplay muted loop id="bg-video">
+            <source src="video/GokuMeditando.mp4" type="video/mp4">
+        </video>
+
         <div class="login-contendor">
             <h2>Bienvenido</h2>
             <p>Ingresa tus datos para poder iniciar sesion</p>
@@ -23,7 +27,6 @@
                 <input type="password" name="txtContrasena" placeholder="Contraseña" required />
                 <button type="submit" name="accion" value="Ingresar">Iniciar Sesión</button>
             </form>
-
         </div>
     </body>
 </html>
