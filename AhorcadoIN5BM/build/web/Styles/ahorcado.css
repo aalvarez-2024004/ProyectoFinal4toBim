@@ -6,27 +6,39 @@
   font-family: 'Roboto', sans-serif;
 }
 
+/* Fondo transparente para ver el video */
 body {
-  background: #22c360;
-  background: linear-gradient(0deg, rgba(34, 195, 96, 1) 17%, rgba(253, 187, 45, 1) 84%);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  color: #fff;
-  font-size: 16px;
 }
 
+/* --- Video de fondo pantalla completa --- */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;      /* siempre ancho de la ventana */
+  height: 100vh;     /* siempre alto de la ventana */
+  object-fit: cover; /* recorta y rellena sin deformar */
+  z-index: -1;       /* detrás de todo */
+  background: black; /* evita bordes blancos al cargar */
+}
+
+/* Contenedor del juego, semitransparente */
 .contenedor {
-  width: 100%;
+  width: 95%;
   max-width: 1200px;
-  background-color: #e6e1e1;
-  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
   padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeIn 1.5s ease;
 }
 
 /*Título*/
@@ -117,7 +129,8 @@ body {
   letter-spacing: 15px;
   text-align: center;
   margin: 20px 0;
-  color: #333;
+  color: #fff;   /* letras en blanco */
+  text-shadow: 0 0 5px rgba(0,0,0,0.5); /* (opcional) un ligero brillo para contraste */
 }
 
 /* Contenedor de pista de texto */
@@ -319,6 +332,11 @@ body {
 .salir:hover {
   background-color: #7B1FA2;
   transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /*Responsividad*/

@@ -15,6 +15,11 @@
     </head>
 
     <body>
+        
+        <video autoplay muted loop id="bg-video">
+            <source src="video/FondoAhorcado.mp4" type="video/mp4">
+        </video>
+        
         <div class="contenedor">
             <div class="titulo">ahorcadoMF</div>
             <div class="temporizador">Temporizador: 05:00</div>
